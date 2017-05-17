@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portafolio", "Portafolio\Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{1F0A1050-6406-4558-B694-F7A2D217A618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portafolio.Core", "Portafolio.Core\Portafolio.Core.csproj", "{ACE6C128-4E33-4170-835A-609E4113C589}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{D91BA3C9-8890-4FF2-A3D0-EFB25C2E6AA0}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{1F0A1050-6406-4558-B694-F7A2D217A618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F0A1050-6406-4558-B694-F7A2D217A618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F0A1050-6406-4558-B694-F7A2D217A618}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ACE6C128-4E33-4170-835A-609E4113C589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ACE6C128-4E33-4170-835A-609E4113C589}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ACE6C128-4E33-4170-835A-609E4113C589}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ACE6C128-4E33-4170-835A-609E4113C589}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D91BA3C9-8890-4FF2-A3D0-EFB25C2E6AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D91BA3C9-8890-4FF2-A3D0-EFB25C2E6AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D91BA3C9-8890-4FF2-A3D0-EFB25C2E6AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
