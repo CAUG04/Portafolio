@@ -1,10 +1,13 @@
 namespace Model
 {
+    using Helper;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
+
 
     [Table("Usuario")]
     public partial class Usuario
@@ -63,5 +66,37 @@ namespace Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Testimonio> Testimonio { get; set; }
+
+
+        public ResponseModel Acceder (string Email, string Password)
+        {
+            var rm = new ResponseModel();
+
+            try
+            {
+                using (var ctx = new Portafolio())
+                {
+                    Password = HashHelper.MD5(Password);
+                    var usuario = ctx.Usuario.Where(x => x.Email == Email)
+                                             .Where(x => x.Password == Password)
+                                             .SingleOrDefault();
+                    if(usuario != null)
+                    {
+                        SessionHelper.AddUserToSession(usuario.id.ToString());
+                        rm.SetResponse(true);
+                    }
+                    else
+                    {
+                        rm.SetResponse(false, "Correo +o Contraseña incorrecta");
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }
+
+            return rm;
+        }
     }
 }
