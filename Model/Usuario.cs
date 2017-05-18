@@ -68,7 +68,7 @@ namespace Model
         public virtual ICollection<Testimonio> Testimonio { get; set; }
 
 
-        public ResponseModel Acceder (string Email, string Password)
+        public ResponseModel Acceder(string Email, string Password)
         {
             var rm = new ResponseModel();
 
@@ -80,7 +80,7 @@ namespace Model
                     var usuario = ctx.Usuario.Where(x => x.Email == Email)
                                              .Where(x => x.Password == Password)
                                              .SingleOrDefault();
-                    if(usuario != null)
+                    if (usuario != null)
                     {
                         SessionHelper.AddUserToSession(usuario.id.ToString());
                         rm.SetResponse(true);
@@ -97,6 +97,26 @@ namespace Model
             }
 
             return rm;
+        }
+
+
+        public Usuario Obtener(int id)
+        {
+            var usuario = new Usuario();
+
+            try
+            {
+                using (var ctx = new Portafolio())
+                {
+                    usuario = ctx.Usuario.Where(x => x.id == id)
+                                         .SingleOrDefault();
+                }
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }
+            return usuario;
         }
     }
 }

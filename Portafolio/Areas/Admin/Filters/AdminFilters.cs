@@ -37,7 +37,7 @@ namespace Portafolio.Areas.Admin.Filters
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
-                    controller = "Inicio",
+                    controller = "Usuario",
                     action = "Index"
                 }));
             }

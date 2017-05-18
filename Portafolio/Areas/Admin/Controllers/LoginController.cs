@@ -9,13 +9,14 @@ using Portafolio.Areas.Admin.Filters;
 
 namespace Portafolio.Areas.Admin.Controllers
 {
-    [NoLogin]
+    
     public class LoginController : Controller
     {
         private Usuario usuario = new Usuario();
 
 
         // GET: Admin/Login
+        [NoLogin]
         public ActionResult Index()
         {
             return View();
