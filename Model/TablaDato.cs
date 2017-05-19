@@ -35,7 +35,7 @@ namespace Model
                 using (var ctx = new Portafolio())
 
                     datos = ctx.TablaDato.OrderBy(x => x.Orden)
-                                         .Where(x => x.Relacion = relacion)
+                                         .Where(x => x.Relacion == relacion)
                                          .ToList();
             }
             catch (Exception exception)
