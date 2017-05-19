@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Usuario
+@{
     ViewBag.Title = "Acerca de mí";
 }
 
@@ -19,20 +20,28 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="info">
                 <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" name="Nombre" class="form-control" placeholder="Ingrese su nombre" />
+                    @Html.LabelFor(x => x.Nombre)
+                    @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control", placeholder = "Ingrese su nombre" })
+                    @*<label>Nombre</label>
+                        <input type="text" name="Nombre" class="form-control" placeholder="Ingrese su nombre" />*@
                 </div>
                 <div class="form-group">
-                    <label>Apellido</label>
-                    <input type="text" name="Apellido" class="form-control" placeholder="Ingrese su apellido" />
+                    @Html.LabelFor(x => x.Apellido)
+                    @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control", placeholder = "Ingrese su apellido" })
+                    @*<label>Apellido</label>
+                        <input type="text" name="Apellido" class="form-control" placeholder="Ingrese su apellido" />*@
                 </div>
                 <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="text" name="Email" class="form-control" placeholder="Ingrese su correo" />
+                    @Html.LabelFor(x => x.Email)
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Ingrese su correo" })
+                    @*<label>E-mail</label>
+                        <input type="text" name="Email" class="form-control" placeholder="Ingrese su correo" />*@
                 </div>
                 <div class="form-group">
-                    <label>Teléfono</label>
-                    <input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su teléfono" />
+                    @Html.LabelFor(x => x.Telefono)
+                    @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control", placeholder = "Ingrese su teléfono" })
+                    @*<label>Teléfono</label>
+                        <input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su teléfono" />*@
                 </div>
                 <div class="form-group">
                     <label>Foto de perfil</label>
@@ -47,12 +56,16 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Ciudad</label>
-                    <input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su ciudad" />
+                    @Html.LabelFor(x => x.Ciudad)
+                    @Html.TextBoxFor(x => x.Ciudad, new { @class = "form-control", placeholder = "Ingrese su ciudad" })
+                    @*<label>Ciudad</label>
+                        <input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su ciudad" />*@
                 </div>
                 <div class="form-group">
-                    <label>Dirección</label>
-                    <textarea name="Direccion" class="form-control" placeholder="Ingrese su dirección"></textarea>
+                    @Html.LabelFor(x => x.Direccion)
+                    @Html.TextBoxFor(x => x.Direccion, new { @class = "form-control", placeholder = "Ingrese su dirección" })
+                    @*<label>Dirección</label>
+                        <textarea name="Direccion" class="form-control" placeholder="Ingrese su dirección"></textarea>*@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="social">
@@ -62,8 +75,10 @@
                         <span class="input-group-addon">
                             <i class="fa fa-facebook"></i>
                         </span>
-                        <input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su Facebook" />
+                        @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control", placeholder = "Ingrese su Facebook" })
+                        @*<input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su Facebook" />*@
                     </div>
+                    @Html.ValidationMessageFor(x => x.Facebook, null, new { @class = "label label-danger" })
                 </div>
                 <div class="form-group">
                     <label>Twitter</label>
@@ -71,17 +86,20 @@
                         <span class="input-group-addon">
                             <i class="fa fa-twitter"></i>
                         </span>
-                        <input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su Twitter" />
+                        @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control", placeholder = "Ingrese su Twitter" })
+                        @*<input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su Twitter" />*@
                     </div>
+                    @Html.ValidationMessageFor(x => x.Twitter, null, new { @class = "label label-danger" })
                 </div>
                 <div class="form-group">
                     <label>YouTube</label>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-youtube"></i>
-                        </span>
-                        <input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su YouTube" />
+                        </span>@Html.TextBoxFor(x => x.Youtube, new { @class = "form-control", placeholder = "Ingrese su YouTube" })
+                        @*<input type="text" name="Ciudad" class="form-control" placeholder="Ingrese su YouTube" />*@
                     </div>
+                    @Html.ValidationMessageFor(x => x.Youtube, null, new { @class = "label label-danger" })
                 </div>
             </div>
         </div>
