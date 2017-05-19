@@ -41,6 +41,9 @@ namespace Model
         [Column(TypeName = "text")]
         public string Direccion { get; set; }
 
+        [StringLength(50)]
+        public string Ciudad { get; set; }
+
         public int? Pais_id { get; set; }
 
         [StringLength(50)]
