@@ -1,4 +1,5 @@
-﻿using Portafolio.Areas.Admin.Filters;
+﻿using Model;
+using Portafolio.Areas.Admin.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace Portafolio.Areas.Admin.Controllers
     [Autenticado]
     public class UsuarioController : Controller
     {
+        
+        private Usuario usuario = new Usuario();
+        private TablaDato dato = new TablaDato();
+
         // GET: Admin/Usuario
         public ActionResult Index()
         {
