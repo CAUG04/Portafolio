@@ -20,7 +20,22 @@ namespace Portafolio.Areas.Admin.Controllers
         public ActionResult Index()
         {
             ViewBag.Paises = dato.Listar("pais");
-            return View(usuario.Obtener(SessionHelper.GetUser()));
+            return View(usuario.Obtener( SessionHelper.GetUser() ));
+        }
+
+        public JsonResult Guardar( Usuario model, HttpPostedFileBase Foto)
+        {
+            var rm = new ResponseModel();
+
+
+            //Retiramos la validacion de esta propiedad
+            ModelState.Remove("Password");
+
+            if (ModelState.IsValid)
+            {
+                rm = model.Guardar(Foto);
+            }
+            return Json(rm);
         }
     }
 }
