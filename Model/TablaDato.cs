@@ -26,7 +26,7 @@ namespace Model
 
         public int Orden { get; set; }
 
-        public List<TablaDato> Listar (string relacion)
+        public List<TablaDato> Listar(string relacion)
         {
             var datos = new List<TablaDato>();
 

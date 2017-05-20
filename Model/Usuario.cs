@@ -5,9 +5,12 @@ namespace Model
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity;
     using System.Data.Entity.Spatial;
+    using System.Data.Entity.Validation;
+    using System.IO;
     using System.Linq;
-
+    using System.Web;
 
     [Table("Usuario")]
     public partial class Usuario
@@ -90,7 +93,7 @@ namespace Model
                     }
                     else
                     {
-                        rm.SetResponse(false, "Correo +o Contraseña incorrecta");
+                        rm.SetResponse(false, "Correo o Contraseña incorrecta");
                     }
                 }
             }
@@ -120,6 +123,51 @@ namespace Model
                 throw;
             }
             return usuario;
+        }
+
+        public ResponseModel Guardar(HttpPostedFileBase Foto)
+        {
+            var rm = new ResponseModel();
+
+            try
+            {
+                using (var ctx = new Portafolio())
+                {
+                    ctx.Configuration.ValidateOnSaveEnabled = false;
+
+                    var eUsuario = ctx.Entry(this);
+                    eUsuario.State = EntityState.Modified;
+
+                    //Campos que queremos ignorar
+                    if (Foto != null)
+                    {
+                        // Nombre del archivo es decir, lo renombramos para que no se repita nunca
+                        string archivo = DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetFileName(Foto.FileName);
+
+                        //La ruta donde lo vamos guardar
+                        Foto.SaveAs(HttpContext.Current.Server.MapPath("~/uploads/") + archivo);
+
+                        //Establecemos en nuestro modelo el nombre del archivo
+                        this.Foto = archivo;
+                    }
+                    if (Password == null) eUsuario.Property(x => x.Password).IsModified = false;
+
+                    ctx.SaveChanges();
+
+                    rm.SetResponse(true);
+                }
+            }
+
+            catch (DbEntityValidationException e)
+            {
+                throw;
+            }
+
+            catch (Exception exception)
+            {
+                throw;
+            }
+            return rm;
         }
     }
 }
